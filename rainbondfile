@@ -1,4 +1,5 @@
 ports:
    - port: 80
      procotol: http
+cmd: dotnet aspnetapp.dll      
      
