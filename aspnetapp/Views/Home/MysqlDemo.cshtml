@@ -1,7 +1,11 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<H2>MYSQL连接信息：</H2>
+<H2>MYSQL连接信息：@{
+    if (ViewData["MYSQL_HOST"]==null){
+      Write("无数据库连接");
+    }
+    }</H2>
 <table>
     <tr>
         <td>
