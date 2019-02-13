@@ -5,25 +5,38 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using aspnetapp.Models;
+using MySql.Data.MySqlClient;  
+using aspnetapp.Utils;
+using aspnetapp.Dao;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace aspnetapp.Controllers
 {
     public class HomeController : Controller
     {
+        public string title = ".Netcore Demo For Rainbond";
         public IActionResult Index()
         {
+            ViewData["Title"] = title;
             return View();
         }
 
-        public IActionResult About()
+        [Route("mysqldemo")]
+        public IActionResult MysqlDemo()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["Title"] = title;
+            ViewData["MYSQL_HOST"] = Environment.GetEnvironmentVariable("MYSQL_HOST");
+            ViewData["MYSQL_PORT"] = Environment.GetEnvironmentVariable("MYSQL_PORT");
+            ViewData["MYSQL_USER"] = Environment.GetEnvironmentVariable("MYSQL_USER");
+            ViewData["MYSQL_PASSWORD"] = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+            ViewData["MYSQL_DATABASE"] = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
             return View();
         }
-
-        public IActionResult Contact()
+        [Route("apidemo")]
+        public IActionResult APIDemo()
         {
+            ViewData["Title"] = title;
             ViewData["Message"] = "Your contact page.";
 
             return View();

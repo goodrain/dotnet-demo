@@ -1,0 +1,4 @@
+.vscode
+aspnetapp/bin
+aspnetapp/obj
+debug.sh

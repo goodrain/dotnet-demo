@@ -2,73 +2,132 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - aspnetapp</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <meta
+      name="description"
+      content="Rainbond（云帮）是一款以应用为中心的开源PaaS，深度整合基于Kubernetes的容器管理、Service Mesh微服务架构最佳实践、多类型CI/CD应用构建与交付、多数据中心资源管理等技术，为用户提供云原生应用全生命周期解决方案，构建应用与基础设施、应用与应用、基础设施与基础设施之间互联互通的生态体系，满足支撑业务高速发展所需的敏捷开发、高效运维和精益管理需求。"
+    />
+
+    <meta name="author" content="goodrain" />
+
+    <meta property="og:title" content="Rainbond Static Demo" />
+    <meta
+      property="og:description"
+      content="Rainbond（云帮）是一款以应用为中心的开源PaaS，深度整合基于Kubernetes的容器管理、Service Mesh微服务架构最佳实践、多类型CI/CD应用构建与交付、多数据中心资源管理等技术，为用户提供云原生应用全生命周期解决方案，构建应用与基础设施、应用与应用、基础设施与基础设施之间互联互通的生态体系，满足支撑业务高速发展所需的敏捷开发、高效运维和精益管理需求。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/" />
+    <meta property="og:updated_time" content="2017-03-02T21:56:55&#43;01:00" />
+    <link rel="canonical" href="/" />
+
+    <link href="./static/css/font.css" rel="stylesheet" type="text/css" />
+    <link href="./static/css/kube.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="./static/css/kube.legenda.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="./static/css/highlight.css" rel="stylesheet" type="text/css" />
+    <link href="./static/css/master.css" rel="stylesheet" type="text/css" />
+    <link href="./static/css/kube.demo.css" rel="stylesheet" type="text/css" />
+
+    <link href="./static/css/custom.css" rel="stylesheet" type="text/css" />
+     <link
+      href="https://cdn.bootcss.com/jquery-jsonview/1.2.3/jquery.jsonview.css"
+      rel="stylesheet"
+    />
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">aspnetapp</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </div>
+    <header>
+      <div class="show-sm">
+        <div id="nav-toggle-box">
+          <div id="nav-toggle-brand">
+            <a href="https://www.rainbond.com" target="_blank">Rainbond</a>
+          </div>
+          <a
+            data-component="toggleme"
+            data-target="#top"
+            href="#"
+            id="nav-toggle"
+            ><i class="kube-menu"></i
+          ></a>
         </div>
-    </nav>
+      </div>
+      <div class="hide-sm" id="top">
+        <div id="top-brand">
+          <a href="https://www.rainbond.com" target="_blank" title="home">Rainbond</a>
+        </div>
+        <nav id="top-nav-main">
+          <ul>
+            <li>
+              <a href="/" target="_blank"
+                >首页</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/goodrain/dotnet-demo" target="_blank"
+                >Github</a
+              >
+            </li>
 
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - aspnetapp</p>
-        </footer>
-    </div>
-
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-
-    @RenderSection("Scripts", required: false)
+            <li>
+              <a
+                href="https://www.rainbond.com/docs/stable/user-manual/app-creation/language-support/netcore.html"
+                target="_blank"
+                >.NetCore语言支持文档</a
+              >
+            </li>
+            <li>
+              <a
+                href="./mysqldemo"
+                target="_blank"
+                >连接Mysql</a
+              >
+            </li>
+            <li>
+              <a
+                href="./apidemo"
+                target="_blank"
+                >模拟请求API</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <nav id="top-nav-extra">
+          <ul>
+            <li>
+              <a href="https://console.goodrain.com" target="_blank"
+                >试用公有云</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+        <div id="main">
+             @RenderBody()
+        </div>
+    </main>
+    <footer>
+      <footer id="footer">
+        <nav>
+          <ul>
+            <li><a href="https://github.com/goodrain/rainbond"><span>Rainbond Github</span></a></li>
+          </ul>
+        </nav>
+        <p>&copy; Licence Apache.</p>
+      </footer>
+    </footer>
+    <!-- <script
+      src="./static/js/jquery-2.1.4.min.js"
+      type="text/javascript"
+    ></script> -->
+    <script type="text/javascript" src="./static/js/tocbot.min.js"></script>
+    <script src="./static/js/kube.js" type="text/javascript"></script>
+    <script src="./static/js/master.js" type="text/javascript"></script>
 </body>
 </html>

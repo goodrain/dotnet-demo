@@ -1,0 +1,78 @@
+﻿
+<div class="row col-12" style="display:flex">
+            <div class="form-item" style="width:100%;display: flex;margin-bottom: 1rem">
+                <label style="width:10%;line-height: 35px">URL <span >：</span></label>
+                <select style="width:13%;border-radius: 0" id="method">
+                  <option selected="selected" value="get">get</option>
+                  <option value="post">post</option>
+                  <option value="delete">delete</option>
+                  <option value="put">put</option>
+                </select>
+                <input type="text" style="border-radius: 0" id="api_url" value="/api/user">
+            </div>
+            <div class="col col-2" style="width:20%">
+                <button class="button small" style="float:right" onclick="handleClick()">Send</button>
+              </div>
+           
+           
+           
+        </div>
+        <div class="row col-12" style="display:none" id="unget">
+            <div class="form-item" style="width:100%;display: flex;margin-bottom: 1rem" >
+                <label style="width:6%;line-height: 25px">Body <span >：</span></label>
+                <textarea rows="10" id="bodyParam" style="width:94%"></textarea>
+            </div>
+        </div>
+        <div>
+            <label style="width:10%;line-height: 35px">Response <span >：</span></label>
+            <div
+              class="row col-12"
+              id="json"
+              style="border: 1px solid #3794de;min-height: 250px;border-radius: 2px"
+            ></div>
+        </div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-jsonview/1.2.3/jquery.jsonview.js"></script>
+<script>
+    $(function() {
+    
+    document.getElementById('method').onchange = function(){
+        if($('#method').val() == 'get'){
+        $('#unget').css({display:'none'})
+        }else{
+        $('#unget').css({display:'block'})
+        }
+    }
+    handleClick = () => {
+        let apiUrl = $('#api_url').val();
+        var method = $('#method').val();
+        var bodyParam = $('#bodyParam').val();
+        var flag = apiUrl && method ;
+        if(!flag){
+            $("#json").JSONView('{"msg": "please enter a valid API", "msg_show": "请输入有效api或参数!"}')
+            return;
+        }
+        $("#json").text("请求中")
+        $.ajax({
+        method: method,
+        // headers: {
+        //   Authorization: `GRJWT ${getCookie("token")}`
+        // },
+        url: apiUrl,
+        data:bodyParam,
+        cache: false,
+        success: data => {
+            if (data[0] == "{"){
+                $("#json").JSONView(data);
+            }else{
+                $("#json").html(data)
+            }
+        },
+        error:(response,err)=>{
+           var message = {"msg": "the server responded with a status of "+response.status, "msg_show": response.statusText}
+           $("#json").JSONView(message);
+        }
+        });
+    };
+    });
+</script>        

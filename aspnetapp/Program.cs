@@ -12,10 +12,11 @@ namespace aspnetapp {
     public class Program {
         public static void Main (string[] args) {
             string port = "5000";
-            if (Environment.GetEnvironmentVariable ("PORT") != "") {
-                port = Environment.GetEnvironmentVariable ("PORT");
+            if (Environment.GetEnvironmentVariable("PORT") != null) {
+                port = Environment.GetEnvironmentVariable("PORT");
             }
-            CreateWebHostBuilder (port, args).Build ().Run ();
+            Console.WriteLine("Listing :{0}", port);
+            CreateWebHostBuilder (port, args).Build ().Run();
         }
         public static IWebHostBuilder CreateWebHostBuilder (string port, string[] args) =>
             WebHost.CreateDefaultBuilder (args)
