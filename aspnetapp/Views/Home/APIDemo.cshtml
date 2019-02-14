@@ -55,9 +55,7 @@
         $("#json").text("请求中")
         $.ajax({
         method: method,
-        // headers: {
-        //   Authorization: `GRJWT ${getCookie("token")}`
-        // },
+        contentType: "application/json"
         url: apiUrl,
         data:bodyParam,
         cache: false,
